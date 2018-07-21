@@ -1,0 +1,26 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #1b1b1b;
+    color: white;
+    text-align: center;
+}
+
+.span-19 {
+	width:90%;
+	float:left;
+}
+
+.custom_header {
+	color : #0088cc;
+}
+
+.custom-label {
+    float: left;
+   
+    padding-top: 5px;
+    padding-right: 15px;
+    text-align: right;
+}
