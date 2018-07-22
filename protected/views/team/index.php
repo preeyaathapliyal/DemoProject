@@ -70,7 +70,7 @@ $this->widget('bootstrap.widgets.TbGridView', array(
         ),
         array(
             'class' => 'bootstrap.widgets.TbButtonColumn',
-            'template' => '{view},{update},{delete}',
+            'template' => '{view}{update}{delete}',
             'buttons' => array
                 (
                 'view' =>

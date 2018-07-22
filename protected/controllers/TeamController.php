@@ -161,13 +161,13 @@ class TeamController extends Controller {
                         Yii::app()->user->setFlash('success', "Team saved successfully!");
                         $this->redirect(array('index'));
                     } else {
-                        Yii::app()->user->setFlash('error', "Team not saved!");
+                        $model->addError('common_error','Error in saving team!');
                     }
                 } else {
-                    Yii::app()->user->setFlash('uploadError', "Error in uploading logo!");
+                    $model->addError('common_error','Error in uploading logo!');
                 }
             } else {
-                Yii::app()->user->setFlash('exist', "Team already exist!");
+                $model->addError('common_error','Team already exists!');
             }
         }
         
@@ -183,7 +183,6 @@ class TeamController extends Controller {
      */
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
-        //echo "<pre>";print_r($_FILES);exit;
         if (isset($_POST['Team'])) {
             $this->performAjaxValidation($model);
             
@@ -198,10 +197,10 @@ class TeamController extends Controller {
                     Yii::app()->user->setFlash('success', "Team updated successfully!");
                     $this->redirect(array('index'));
                 } else {
-                    Yii::app()->user->setFlash('error', "Team not updated!");
+                    $model->addError('common_error','Error in updating team!');
                 }
             } else {
-                Yii::app()->user->setFlash('uploadError', "Error in uploading logo!");
+                $model->addError('common_error','Error in uploading logo!');
             }
             
         }

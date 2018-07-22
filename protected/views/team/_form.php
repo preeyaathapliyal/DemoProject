@@ -6,26 +6,12 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
     'id' => 'team-form',
     'enableAjaxValidation' => false,
-    'htmlOptions' => array('enctype' => 'multipart/form-data'),
+    'htmlOptions' => array('class'=>'well','enctype' => 'multipart/form-data'),
 )); ?>
 
-<?php if (Yii::app()->user->hasFlash('error')) { ?>
-        <div class="row">
-            <?php echo Yii::app()->user->getFlash('error'); ?>
-        </div>
-    <?php } ?>
-    <?php if (Yii::app()->user->hasFlash('uploadError')) { ?>
-        <div class="row">
-            <?php echo Yii::app()->user->getFlash('uploadError'); ?>
-        </div>
-    <?php } ?>
-    <?php if (Yii::app()->user->hasFlash('exist')) { ?>
-        <div class="row">
-            <?php echo Yii::app()->user->getFlash('exist'); ?>
-        </div>
-    <?php } ?>
-
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
+
+    <?php echo $form->error($model,'common_error'); ?>
 
     <?php echo $form->textFieldRow($model,'name',array('class'=>'span5','maxlength'=>200)); ?>
 

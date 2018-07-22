@@ -16,6 +16,9 @@ class Team extends CActiveRecord
     /**
      * @return string the associated database table name
      */
+
+    public $common_error;
+
     public function tableName()
     {
         return 'tbl_team';
@@ -33,7 +36,7 @@ class Team extends CActiveRecord
             array('name, logo', 'length', 'max'=>200),
             array('logo', 'file','types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 20),//max size 20MB
             array('club_state', 'length', 'max'=>500),
-            array('updated_at', 'safe'),
+            array('updated_at,common_error', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('team_id, name, logo, club_state, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -63,6 +66,7 @@ class Team extends CActiveRecord
             'club_state' => 'Club State',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'common_error' => 'Error'
         );
     }
 
