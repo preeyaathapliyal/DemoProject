@@ -8,6 +8,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1 class="row">Create Player</h1>
+<h1 >Create Player</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

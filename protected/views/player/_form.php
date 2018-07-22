@@ -3,70 +3,47 @@
 /* @var $model Player */
 /* @var $form CActiveForm */
 ?>
-
-<div class="form">
-
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'player-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+        'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-    <div class="row"><p class="note">Fields with <span class="required">*</span> are required.</p></div>
-
+	<p class="help-block">Fields with <span class="required">*</span> are required.</p>
+<?php if (Yii::app()->user->hasFlash('error')) { ?>
+        <div style="color: red">
+            <?php echo Yii::app()->user->getFlash('error'); ?>
+        </div>
+    <?php } ?>
+    <?php if (Yii::app()->user->hasFlash('uploadError')) { ?>
+        <div style="color: red">
+            <?php echo Yii::app()->user->getFlash('uploadError'); ?>
+        </div>
+    <?php } ?>
+    <?php if (Yii::app()->user->hasFlash('exist')) { ?>
+        <div style="color: red">
+            <?php echo Yii::app()->user->getFlash('exist'); ?>
+        </div>
+    <?php } ?>
 	
+        <?php 
+        echo $form->dropDownListRow($model, 'team_id', CHtml::listData(Team::model()->findAll(array('order'=>'Name ASC')), 'team_id', 'name'),array('empty'=>'Select Team','class'=>'span5'));
+        ?>
+        <?php echo $form->textFieldRow($model,'first_name',array('class'=>'span5')); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'player_id'); ?>
-		<?php echo $form->textField($model,'player_id'); ?>
-		<?php echo $form->error($model,'player_id'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'last_name',array('class'=>'span5','maxlength'=>1)); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'team_id'); ?>
-		<?php echo $form->textField($model,'team_id'); ?>
-		<?php echo $form->error($model,'team_id'); ?>
-	</div>
+	<?php echo $form->fileFieldRow($model,'image',array('class'=>'span5')); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'first_name'); ?>
-		<?php echo $form->textField($model,'first_name',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'first_name'); ?>
-	</div>
+	<?php echo $form->textFieldRow($model,'jersey_number',array('class'=>'span5')); ?>
+        <?php echo $form->textFieldRow($model,'country',array('class'=>'span5')); ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'last_name'); ?>
-		<?php echo $form->textField($model,'last_name',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'last_name'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->textField($model,'image',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'image'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'jersey_number'); ?>
-		<?php echo $form->textField($model,'jersey_number'); ?>
-		<?php echo $form->error($model,'jersey_number'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'country'); ?>
-		<?php echo $form->textField($model,'country',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'country'); ?>
-	</div>
-
-	
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+	<div>
+		<?php $this->widget('bootstrap.widgets.TbButton', array(
+			'buttonType'=>'submit',
+			'type'=>'primary',
+			'label'=>$model->isNewRecord ? 'Create' : 'Save',
+		)); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->

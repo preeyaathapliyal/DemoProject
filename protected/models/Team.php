@@ -90,6 +90,7 @@ class Team extends CActiveRecord
         $criteria->compare('club_state',$this->club_state,true);
         $criteria->compare('created_at',$this->created_at,true);
         $criteria->compare('updated_at',$this->updated_at,true);
+        $criteria->order = 'team_id DESC';
 
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,

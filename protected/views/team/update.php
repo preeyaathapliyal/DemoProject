@@ -10,6 +10,6 @@ $this->breadcrumbs=array(
 
 ?>
 
-<h1 class="row">Update Team </h1>
+<h1>Update Team </h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

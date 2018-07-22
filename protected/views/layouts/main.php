@@ -14,45 +14,42 @@
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/js/jquery.min.js"></script>
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+        
     </head>
 
     <body>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="<?php echo Yii::app()->homeUrl; ?>"> 	
-                        <?php echo CHtml::encode(Yii::app()->name); ?>
-                    </a>
-                    <a class="brand" href="<?php echo Yii::app()->createUrl('player/admin'); ?>"> 	
-                        Player
-                    </a>
-                    <a class="brand" href="<?php echo Yii::app()->homeUrl; ?>"> 	
-                        Match Participation
-                    </a>
-                </div>
-            </div>
-        </div><!-- mainmenu -->
+        <?php $this->widget('bootstrap.widgets.TbNavbar',array(
+    'items'=>array(
+        array(
+            'class'=>'bootstrap.widgets.TbMenu',
+            'items'=>array(
+                array('label'=>'Team', 'url'=>array('/team/index')),
+                array('label'=>'Player', 'url'=>array('/player/admin')),
+                array('label'=>'Match', 'url'=>array('/match/admin')),
+            ),
+            'htmlOptions'=> array('class' => 'navbar-custom' ),
+        ),
+    ),
+)); ?>
 
-        <div class="container">
-            <div  class="page-header">
-                <?php if (isset($this->breadcrumbs)): ?>
-                    <?php
-                    $this->widget('zii.widgets.CBreadcrumbs', array(
-                        'links' => $this->breadcrumbs,
-                    ));
-                    ?><!-- breadcrumbs -->
-                <?php endif ?>
-            </div>
-            <div class="content">
-                <?php echo $content; ?>
-            </div>
+<div class="container" id="page">
 
-            <div class="footer text-center">
-                Copyright &copy; <?php echo date('Y'); ?> by Cricket Association.<br/>
-                All Rights Reserved.<br/>
-            </div><!-- footer -->
-        </div>
+  <?php if(isset($this->breadcrumbs)):?>
+    <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+      'links'=>$this->breadcrumbs,
+    )); ?><!-- breadcrumbs -->
+  <?php endif?>
+
+  <?php echo $content; ?>
+
+  <div class="clear"></div>
+
+  <!-- <div id="footer">
+    Copyright &copy; <?php //echo date('Y'); ?> by My Company.<br/>
+    All Rights Reserved.<br/>
+    <?php //echo Yii::powered(); ?>
+  </div><!-- footer -->
 
     </body>
 </html>
