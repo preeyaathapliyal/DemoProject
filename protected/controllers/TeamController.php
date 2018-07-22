@@ -145,8 +145,10 @@ class TeamController extends Controller {
      */
     public function actionCreate() {
         $model = new Team;
-        
+
+
         if (isset($_POST['Team'])) {
+
             echo CActiveForm::validate($model);
             $checkTeam = Team::checkTeamExist($_POST['Team']['name']);
             if($checkTeam){
@@ -157,6 +159,7 @@ class TeamController extends Controller {
                     $model->attributes = $_POST['Team'];
                     $model->created_at = date('Y:m:d H:i:s');
                     $model->logo = $fileName;
+
                     if ($model->validate() && $model->save()) {
                         Yii::app()->user->setFlash('success', "Team saved successfully!");
                         $this->redirect(array('index'));
@@ -183,26 +186,35 @@ class TeamController extends Controller {
      */
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
+
+        $oldLogoName = $model->logo;
         if (isset($_POST['Team'])) {
-            $this->performAjaxValidation($model);
+            $model->attributes = $_POST['Team'];
             
             $uploadedFile=CUploadedFile::getInstance($model,'logo');
+
+
             if(!empty($uploadedFile)){
                 $fileName = "{$_POST['Team']['name']}-{$uploadedFile->name}"; 
                 $uploadedFile->saveAs(Yii::app()->basePath.'/../themes/images/'.$fileName); 
-                $model->attributes = $_POST['Team'];
-                $model->updated_at = date('Y:m:d H:i:s');
+                if(file_exists(Yii::app()->basePath.'/../themes/images/'.$oldLogoName))
+                    unlink(Yii::app()->basePath.'/../themes/images/'.$oldLogoName);
                 $model->logo = $fileName;
-                if ($model->validate() && $model->save()) {
-                    Yii::app()->user->setFlash('success', "Team updated successfully!");
-                    $this->redirect(array('index'));
-                } else {
-                    $model->addError('common_error','Error in updating team!');
-                }
-            } else {
-                $model->addError('common_error','Error in uploading logo!');
+            }else{
+                 $model->logo = $oldLogoName;
             }
-            
+
+            $model->updated_at = date('Y:m:d H:i:s');
+
+            if($model->logo == ''){
+                $model->addError('logo','Logo can not be blank!');
+            }
+            elseif($model->save(false)){
+                Yii::app()->user->setFlash('success', "Team updated successfully!");
+                $this->redirect(array('index'));
+            }else {
+                $model->addError('common_error','Error in updating team!');
+            }
         }
         $this->render('update', array(
             'model' => $model,
@@ -214,11 +226,28 @@ class TeamController extends Controller {
      * If deletion is successful, the browser will be redirected to the 'admin' page.
      * @param integer $id the ID of the model to be deleted
      */
-    public function actionDelete($id) {//echo "sdfdg"; exit;
-        $model = $this->loadModel($id)->delete();
+    public function actionDelete($id) {
+        try{
+            $model = $this->loadModel($id);
+
+            if(file_exists(Yii::app()->basePath.'/../themes/images/'.$model->logo))
+                        unlink(Yii::app()->basePath.'/../themes/images/'.$model->logo);
+
+            $model = $model->delete();
+                if(!isset($_GET['ajax']))
+                    Yii::app()->user->setFlash('success','Team Deleted Successfully');
+                else
+                    echo "<div class='flash-success'>Team Deleted Successfully</div>";
+        }catch(CDbException $e){
+            if(!isset($_GET['ajax']))
+                Yii::app()->user->setFlash('error','Error in deleting Team');
+            else
+                echo "<div class='flash-error'>Error in deleting Team"; //for ajax
+        }
+                                
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if(!isset($_GET['ajax']))
-                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin')); 
     }
     
 }

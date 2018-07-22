@@ -34,7 +34,13 @@ class Team extends CActiveRecord
         return array(
             array('name, club_state', 'required'),
             array('name, logo', 'length', 'max'=>200),
-            array('logo', 'file','types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 20),//max size 20MB
+            array('logo', 'file', 'types'=>'jpg, jpeg, gif, png','allowEmpty'=>true),
+
+            //array('logo', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty'=>false, 'on'=>'create'),
+            //array('logo', 'file', 'types'=>'jpg, jpeg, gif, png', 'allowEmpty'=>true, 'on'=>'update'),
+    
+            //array('logo', 'file','types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 20,'allowEmpty'=>false),//max size 20MB
+            //array('logo', 'file','types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 20,'allowEmpty'=>true),//max size 20MB
             array('club_state', 'length', 'max'=>500),
             array('updated_at,common_error', 'safe'),
             // The following rule is used by search().
