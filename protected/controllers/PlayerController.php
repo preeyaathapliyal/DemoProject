@@ -60,9 +60,6 @@ class PlayerController extends Controller {
     public function actionCreate() {
         $model = new Player;
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-       // echo "<pre>";print_r($_FILES);exit;
         if (isset($_POST['Player'])) {
             echo CActiveForm::validate($model);
             $uploadedFile=CUploadedFile::getInstance($model,'image');
@@ -77,10 +74,10 @@ class PlayerController extends Controller {
                     Yii::app()->user->setFlash('success', "Player saved successfully!");
                     $this->redirect(array('admin'));
                 } else {
-                    Yii::app()->user->setFlash('error', "Player not saved!");
+                    $model->addError('common_error','Error in saving Player!');
                 }
             } else {
-                Yii::app()->user->setFlash('uploadError', "Error in uploading image!");
+                $model->addError('common_error','Error in uploading logo!');
             }
           
             
@@ -99,28 +96,34 @@ class PlayerController extends Controller {
     public function actionUpdate($id) {
         $model = $this->loadModel($id);
 
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
+        $oldImageName = $model->image;
 
         if (isset($_POST['Player'])) {
             $model->attributes = $_POST['Player'];
             $uploadedFile=CUploadedFile::getInstance($model,'image');
+
             if(!empty($uploadedFile)){
                 $time = time();
                 $fileName = "{$time}-{$_POST['Player']['first_name']}-{$uploadedFile->name}"; 
                 $uploadedFile->saveAs(Yii::app()->basePath.'/../themes/images/player_images/'.$fileName); 
-                $model->attributes = $_POST['Player'];
-                $model->updated_at = date('Y:m:d H:i:s');
+                if(file_exists(Yii::app()->basePath.'/../themes/images/player_images/'.$oldImageName))
+                    unlink(Yii::app()->basePath.'/../themes/images/player_images/'.$oldImageName);
                 $model->image = $fileName;
-                if ($model->validate() && $model->save()) {
-                    Yii::app()->user->setFlash('success', "Player updated successfully!");
-                    $this->redirect(array('admin'));
-                } else {
-                    Yii::app()->user->setFlash('error', "Player not updated!");
-                }
-            } else {
-                Yii::app()->user->setFlash('uploadError', "Error in uploading Image!");
+            }else{
+                 $model->image = $oldImageName;
             }
+
+            $model->updated_at = date('Y:m:d H:i:s');
+
+            if($model->image == ''){
+                $model->addError('image','Image can not be blank!');
+            }
+            elseif($model->save(false)){
+                Yii::app()->user->setFlash('success', "Player updated successfully!");
+                $this->redirect(array('admin'));
+            }else {
+                $model->addError('common_error','Error in updating player!');
+            }            
         }
 
         $this->render('update', array(
@@ -134,11 +137,27 @@ class PlayerController extends Controller {
      * @param integer $id the ID of the model to be deleted
      */
     public function actionDelete($id) {
-        $this->loadModel($id)->delete();
+        try{
+            $model = $this->loadModel($id);
 
+            if(file_exists(Yii::app()->basePath.'/../themes/images/player_images/'.$model->image))
+                        unlink(Yii::app()->basePath.'/../themes/images/player_images/'.$model->image);
+
+            $model = $model->delete();
+                if(!isset($_GET['ajax']))
+                    Yii::app()->user->setFlash('success','Player Deleted Successfully');
+                else
+                    echo "<div class='flash-success'>Player Deleted Successfully</div>";
+        }catch(CDbException $e){
+            if(!isset($_GET['ajax']))
+                Yii::app()->user->setFlash('error','Error in deleting Player');
+            else
+                echo "<div class='flash-error'>Error in deleting Player"; //for ajax
+        }
+                                
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-        if (!isset($_GET['ajax']))
-            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        if(!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin')); 
     }
 
     /**
