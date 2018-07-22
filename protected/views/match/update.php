@@ -10,5 +10,5 @@ $this->breadcrumbs=array(
 <?php echo CHtml::button('Manage Match', array('submit' => array('admin'), 'class' => 'btn btn-primary')); ?>
 &nbsp;&nbsp;&nbsp;
 <?php echo CHtml::button('Add Match', array('submit' => array('create'), 'class' => 'btn btn-primary')); ?>
-
-<?php echo $this->renderPartial('_form',array('model'=>$model)); ?>
+</br>
+<?php echo $this->renderPartial('_form',array('model'=>$model,'team2'=>$team2, 'winner'=>$winner)); ?>

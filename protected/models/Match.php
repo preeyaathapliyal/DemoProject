@@ -31,7 +31,7 @@ class Match extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('match_id', 'required'),
+            array('team1, team2, winner, score, match_date, match_status', 'required'),
             array('match_id, team1, team2, winner, score', 'numerical', 'integerOnly'=>true),
             array('match_status', 'length', 'max'=>1),
             array('created_at, updated_at', 'safe'),
@@ -100,6 +100,7 @@ class Match extends CActiveRecord
         $criteria->compare('score',$this->score);
         $criteria->compare('created_at',$this->created_at,true);
         $criteria->compare('updated_at',$this->updated_at,true);
+        $criteria->order = 'match_id DESC';
 
         return new CActiveDataProvider($this, array(
             'criteria'=>$criteria,
@@ -137,5 +138,19 @@ class Match extends CActiveRecord
         } catch (Exception $ex) {
             return $total_score;
         }
+    }
+
+    public static function getMatchStatus($status) {
+        if ($status == '1') {
+            return 'Completed';
+        } else {
+            return 'Tie';
+        }
+    }
+    public static function getMatchStatusArray() {
+        return array(
+            array('id' => 0, 'name' => 'Tie'),
+            array('id' => 1, 'name' => 'Completed'),
+        );
     }
 }

@@ -27,7 +27,7 @@ class MatchController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','admin','create','update','delete'),
+				'actions'=>array('index','view','admin','create','update','delete','teamList','teamListForWinner'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -65,16 +65,22 @@ class MatchController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		//print_r($_POST);exit;
 		if(isset($_POST['Match']))
 		{
 			$model->attributes=$_POST['Match'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->match_id));
+			if($model->save()) {
+				Yii::app()->user->setFlash('success', "Match saved successfully!");
+				$this->redirect(array('admin'));
+			} else {
+				$model->addError('common_error','Error in saving Match!');
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'team2'=>'',
+			'winner'=>'',
 		));
 	}
 
@@ -86,19 +92,25 @@ class MatchController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$team2 = isset($model->team2)?$model->team2:"";
+		$winner = isset($model->winner)?$model->winner:"";
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Match']))
-		{
+		if(isset($_POST['Match'])) {
 			$model->attributes=$_POST['Match'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->match_id));
+			if($model->save()) {
+				Yii::app()->user->setFlash('success', "Match updated successfully!");
+				$this->redirect(array('admin'));
+			} else {
+				$model->addError('common_error','Error in saving Match!');
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'team2'=>$team2,
+			'winner'=>$winner,
 		));
 	}
 
@@ -109,17 +121,23 @@ class MatchController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
-
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		try {
+            $model = $this->loadModel($id);
+			$model = $model->delete();
+            if(!isset($_GET['ajax']))
+                Yii::app()->user->setFlash('success','Match Deleted Successfully');
+            else
+                echo "<div class='flash-success' style='color:green'>Match Deleted Successfully</div>";
+        } catch(CDbException $e) {
+            if(!isset($_GET['ajax']))
+                Yii::app()->user->setFlash('error','Error in deleting Match');
+            else
+                echo "<div class='flash-error'>Error in deleting Match"; //for ajax
+        }
+                                
+        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+        if(!isset($_GET['ajax']))
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin')); 
 	}
 
 	/**
@@ -171,6 +189,42 @@ class MatchController extends Controller
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
+		}
+	}
+	public function actionTeamList() 
+	{
+		$team_id = isset($_POST['Match_team1'])?$_POST['Match_team1']:"";
+		if(!empty($team_id)) {
+			$teamList = Team::model()->findAll(array('condition'=>'team_id != :team_id','params'=>array(':team_id'=>$team_id),'order'=>'Name ASC'));
+			$teamList=CHtml::listData($teamList,'team_id','name');
+			
+		   $team2 = "<option value=''>Select Team2</option>";
+		   foreach($teamList as $key=>$val)
+		   $team2 .= CHtml::tag('option', array('value'=>$key),CHtml::encode($val),true);
+
+			$winner = "<option value=''>Select Winner</option>";
+			echo CJSON::encode(array(
+			  'team2'=>$team2,
+			  'winner'=>$winner
+			));
+		}
+	}
+
+	public function actionTeamListForWinner() 
+	{
+		
+		$teamArray[] = isset($_POST['Match_team1'])?$_POST['Match_team1']:"";
+		$teamArray[] = isset($_POST['Match_team2'])?$_POST['Match_team2']:"";
+
+		if(!empty($teamArray)) {
+			$teamList = implode(',',$teamArray);
+			$teamList = rtrim($teamList,',');
+			$teamWinnerList = Team::model()->findAll(array('condition'=>"team_id in ($teamList)",'order'=>'Name ASC'));
+			$teamWinnerList=CHtml::listData($teamWinnerList,'team_id','name');
+			
+		   echo "<option value=''>Select Winner</option>";
+		   foreach($teamWinnerList as $key=>$val)
+		   echo CHtml::tag('option', array('value'=>$key),CHtml::encode($val),true);
 		}
 	}
 }

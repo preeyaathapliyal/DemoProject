@@ -8,5 +8,5 @@ $this->breadcrumbs=array(
 
 <h1>Create Match</h1>
 <?php echo CHtml::button('Manage Match', array('submit' => array('admin'), 'class' => 'btn btn-primary')); ?>
-
-<?php echo $this->renderPartial('_form', array('model'=>$model)); ?>
+</br>
+<?php echo $this->renderPartial('_form', array('model'=>$model,'team2'=>'','winner'=>'',)); ?>
