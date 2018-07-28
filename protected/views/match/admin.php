@@ -50,7 +50,7 @@ $this->breadcrumbs=array(
 		array(
                     'name' => 'match_status',
                     'value' => 'Match::getMatchStatus($data->match_status)',
-                    'filter' => CHtml::listData(Match::getMatchStatusArray(), 'id', 'name')
+                    'filter' => CHtml::listData(array('0'=>'Tie','1'=>'Completed'), 'id', 'name')
                 ),
 		array(
 			'class'=>'bootstrap.widgets.TbButtonColumn',

@@ -31,10 +31,11 @@ class Match extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('team1, team2, winner, score, match_date, match_status', 'required'),
+            array('team1, team2, score, match_date, match_status', 'required'),
             array('match_id, team1, team2, winner, score', 'numerical', 'integerOnly'=>true),
             array('match_status', 'length', 'max'=>1),
             array('created_at, updated_at', 'safe'),
+            array('winner','getValidationforWinner'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('match_id, team1, team2,match_date, match_status, winner, score, created_at, updated_at', 'safe', 'on'=>'search'),
@@ -123,7 +124,8 @@ class Match extends CActiveRecord
      * @param integer $team_id .
      * @return integer $total_score.
      */
-    public static function getWinner($team_id)
+     /* To be Deleted */
+    public static function getWinner_old($team_id)
     {
         $winner = '';
         try {
@@ -147,10 +149,18 @@ class Match extends CActiveRecord
             return 'Tie';
         }
     }
-    public static function getMatchStatusArray() {
+
+    /* To be Deleted */
+    /*public static function getMatchStatusArray() {
         return array(
             array('id' => 0, 'name' => 'Tie'),
             array('id' => 1, 'name' => 'Completed'),
         );
+    }*/
+
+    public function getValidationforWinner(){
+        if($this->match_status == 1){
+            $this->addError('winner','Winner cannot be blank');  
+        }
     }
 }

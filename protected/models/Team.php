@@ -138,14 +138,30 @@ class Team extends CActiveRecord
      * @param integer $team_id .
      * @return integer $total_score.
      */
-    public static function getTotalScore($team_id)
+    public static function getTotalScore($team_id,$test_case = '')
     {
         $total_score = 0;
         try {
             $match_data = Match::model()->findAll(array('select'=>'score','condition'=>'(team1 = :team_first or team2 = :team_second) and (winner = :winnerTeam or winner is :tie) ','params' => array(':team_first' => $team_id,'team_second' => $team_id, 'winnerTeam' => $team_id , "tie" => NULL)));
+
+            if($test_case == 'Y'){
+                $count = count($match_data);
+                if($count > 0){
+                    $arr = array();
+                    foreach($match_data as $match)
+                        array_push($arr,$match->attributes);
+                } 
+
+                $match_data = $arr;
+            }
+
+
+            $data = array_sum(array_column($match_data, 'score'));
+
             if (!empty($match_data)) {
                 $total_score = array_sum(array_column($match_data,'score'));
             }
+
             return $total_score;
         } catch (Exception $ex) {
             return $total_score;
@@ -198,8 +214,10 @@ class Team extends CActiveRecord
     }
     
     public static function checkTeamExist($team_name) {
+
         try {
             $team = Team::model()->find(array('condition'=>'upper(name) = :name','params'=>array('name'=>strtoupper($team_name))));
+
             if(empty($team)){
                 return true;
             } else {
