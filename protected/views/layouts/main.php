@@ -14,42 +14,45 @@
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/themes/js/jquery.min.js"></script>
 
         <title><?php echo CHtml::encode($this->pageTitle); ?></title>
-        
     </head>
 
     <body>
-
+    <div id="page_content">
         <?php $this->widget('bootstrap.widgets.TbNavbar',array(
-    'items'=>array(
-        array(
-            'class'=>'bootstrap.widgets.TbMenu',
+            'collapse'=>true,
             'items'=>array(
-                array('label'=>'Team', 'url'=>array('/team/index')),
-                array('label'=>'Player', 'url'=>array('/player/admin')),
-                array('label'=>'Match', 'url'=>array('/match/admin')),
+                array(
+                    'class'=>'bootstrap.widgets.TbMenu',
+                    'items'=>array(
+                        array('label'=>'Team', 'url'=>array('/team/index')),
+                        array('label'=>'Player', 'url'=>array('/player/admin')),
+                        array('label'=>'Match', 'url'=>array('/match/admin')),
+                    ),
+                    'htmlOptions'=> array('class' => 'navbar-custom'),
+                ),
             ),
-            'htmlOptions'=> array('class' => 'navbar-custom' ),
-        ),
-    ),
-)); ?>
+        )); ?>
 
-<div class="container" id="page">
+        <div class="container" id="page">
 
-  <?php if(isset($this->breadcrumbs)):?>
-    <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
-      'links'=>$this->breadcrumbs,
-    )); ?><!-- breadcrumbs -->
-  <?php endif?>
+          <?php if(isset($this->breadcrumbs)):?>
+            <?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+              'links'=>$this->breadcrumbs,
+            )); ?><!-- breadcrumbs -->
+          <?php endif?>
 
-  <?php echo $content; ?>
+          <?php echo $content; ?>
 
-  <div class="clear"></div>
+          <div class="clear"></div>
+      </div>
 
-  <!-- <div id="footer">
-    Copyright &copy; <?php //echo date('Y'); ?> by My Company.<br/>
-    All Rights Reserved.<br/>
-    <?php //echo Yii::powered(); ?>
-  </div><!-- footer -->
-
+      <footer class="footer">
+        <div class="container">
+      
+        Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+        All Rights Reserved.<br/>        
+          
+        </div>
+    </footer>
     </body>
 </html>

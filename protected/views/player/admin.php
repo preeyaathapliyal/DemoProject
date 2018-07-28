@@ -38,7 +38,7 @@ $this->breadcrumbs=array(
                     'name' => 'image',
                     'type' => 'image',
                     'filter'=>false,
-                    'value' => 'Yii::app()->request->baseUrl."/themes/images/player_images/".$data->image', 'htmlOptions' => array('width' => '80px', 'height' => '80px'),
+                    'value' => 'Yii::app()->request->baseUrl."/themes/images/player_images/".$data->image', 'htmlOptions' => array('width' => '50px', 'height' => '50px'),
                 ),
 		array(
                     'name' => 'first_name',
