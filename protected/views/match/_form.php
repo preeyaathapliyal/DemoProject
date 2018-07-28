@@ -2,6 +2,7 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm',array(
 	'id'=>'match-form',
 	'enableAjaxValidation'=>false,
+    'type'=>'horizontal',
     'htmlOptions' => array('class'=>'well','enctype' => 'multipart/form-data'),
 )); ?>
     
@@ -10,7 +11,7 @@
 
     <?php echo $form->error($model,'common_error'); ?>
 	<?php 
-    echo $form->dropDownListRow($model, 'team1', CHtml::listData(Team::model()->findAll(array('order'=>'Name ASC')), 'team_id', 'name'),array('empty'=>'Select Team1','class'=>'span5','ajax' => array(
+    echo $form->dropDownListRow($model, 'team1', CHtml::listData(Team::model()->findAll(array('order'=>'Name ASC')), 'team_id', 'name'),array('empty'=>'Select Team1','class'=>'','ajax' => array(
         'type'=>'POST', 
         'url'=>CController::createUrl('match/teamList'), //url to call.
         'data' => array('Match_team1'=>'js:this.value'),
@@ -24,22 +25,28 @@
         )));
     ?>
 
-    <?php  echo $form->dropDownListRow($model,'team2', ($model->isNewRecord) ?  array() : CHtml::listData(Team::model()->findAll(array('order'=>'Name ASC')), 'team_id', 'name'), array('empty'=>'Select Team2','class'=>'span5','ajax' => array(
+    <?php  echo $form->dropDownListRow($model,'team2', ($model->isNewRecord) ?  array() : CHtml::listData(Team::model()->findAll(array('order'=>'Name ASC')), 'team_id', 'name'), array('empty'=>'Select Team2','class'=>'','ajax' => array(
         'type'=>'POST', 
         'url'=>CController::createUrl('match/teamListForWinner'), //url to call.
         'data' => array('Match_team2'=>'js:this.value','Match_team1'=>'js:Match_team1.value'),
         'update'=>'#Match_winner', //selector to update
         ),'options' => array($team2=>array('selected'=>true)))); ?>
 
-    <?php echo $form->labelEx($model,'match_date'); ?>
-    <?php echo $form->dateField($model,'match_date',array('size'=>32,'class'=>'span5')); ?>
-    <?php echo $form->error($model,'match_date'); ?>
+    <div class="control-group ">
 
-	<?php echo $form->textFieldRow($model,'match_status',array('class'=>'span5','maxlength'=>1)); ?>
+        <?php echo $form->labelEx($model,'match_date',array('class'=>'control-label')); ?>
+        <div class="controls">
+            <?php echo $form->dateField ($model,'match_date',array('size'=>32,'class'=>'')); ?>
+            <?php echo $form->error($model,'match_date'); ?>
+        </div>
+    </div>
+    <?php
+        echo $form->dropDownListRow($model, 'match_status', array(''=>'select Match Status','0' => 'Tie', '1' => 'Completed'), array()); 
+    ?>
 
-	<?php  echo $form->dropDownListRow($model, 'winner', ($model->isNewRecord) ?  array() : CHtml::listData(Team::model()->findAll(array('order'=>'Name ASC')), 'team_id', 'name'), array('empty'=>'Select Winner','class'=>'span5','options' => array($winner=>array('selected'=>true)))); ?>
+	<?php  echo $form->dropDownListRow($model, 'winner', ($model->isNewRecord) ?  array() : CHtml::listData(Team::model()->findAll(array('order'=>'Name ASC')), 'team_id', 'name'), array('empty'=>'Select Winner','class'=>'','options' => array($winner=>array('selected'=>true)))); ?>
 
-	<?php echo $form->textFieldRow($model,'score',array('class'=>'span5')); ?>
+	<?php echo $form->textFieldRow($model,'score',array('class'=>'')); ?>
 
 	<div>
 		<?php $this->widget('bootstrap.widgets.TbButton', array(

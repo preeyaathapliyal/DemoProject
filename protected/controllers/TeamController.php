@@ -185,6 +185,9 @@ class TeamController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
+        $parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+        $id = $parser->purify($id); //we purify the $id
+
         $model = $this->loadModel($id);
 
         $oldLogoName = $model->logo;
@@ -228,6 +231,9 @@ class TeamController extends Controller {
      */
     public function actionDelete($id) {
         try{
+            $parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+            $id = $parser->purify($id); //we purify the $id
+
             $model = $this->loadModel($id);
 
             if(file_exists(Yii::app()->basePath.'/../themes/images/'.$model->logo))

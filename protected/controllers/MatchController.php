@@ -92,6 +92,10 @@ class MatchController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+
+		$parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+        $id = $parser->purify($id); //we purify the $id
+
 		$team2 = isset($model->team2)?$model->team2:"";
 		$winner = isset($model->winner)?$model->winner:"";
 		// Uncomment the following line if AJAX validation is needed
@@ -122,6 +126,9 @@ class MatchController extends Controller
 	public function actionDelete($id)
 	{
 		try {
+			$parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+	        $id = $parser->purify($id); //we purify the $id
+    
             $model = $this->loadModel($id);
 			$model = $model->delete();
             if(!isset($_GET['ajax']))
@@ -193,8 +200,12 @@ class MatchController extends Controller
 	}
 	public function actionTeamList() 
 	{
+
 		$team_id = isset($_POST['Match_team1'])?$_POST['Match_team1']:"";
 		if(!empty($team_id)) {
+			$parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+        	$id = $parser->purify($team_id); //we purify the $id
+
 			$teamList = Team::model()->findAll(array('condition'=>'team_id != :team_id','params'=>array(':team_id'=>$team_id),'order'=>'Name ASC'));
 			$teamList=CHtml::listData($teamList,'team_id','name');
 			
@@ -212,6 +223,8 @@ class MatchController extends Controller
 
 	public function actionTeamListForWinner() 
 	{
+		$parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+       	$_POST = $parser->purify($_POST); //we purify the $id
 		
 		$teamArray[] = isset($_POST['Match_team1'])?$_POST['Match_team1']:"";
 		$teamArray[] = isset($_POST['Match_team2'])?$_POST['Match_team2']:"";

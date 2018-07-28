@@ -4338,3 +4338,287 @@ Stack trace:
 REQUEST_URI=/DemoProject/player/update/18
 in C:\xampp\htdocs\DemoProject\protected\controllers\PlayerController.php (106)
 in C:\xampp\htdocs\DemoProject\index.php (13)
+2018/07/23 18:25:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:25:18 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:26:53 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:26:53 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:26:55 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/team/update/4
+---
+2018/07/23 18:27:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:27:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:27:51 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/team/update/4
+---
+2018/07/23 18:45:11 [error] [php] htmlspecialchars() expects parameter 1 to be string, object given (C:\xampp\htdocs\DemoProject\yii\framework\web\helpers\CHtml.php:108)
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(126): require()
+#1 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(95): TeamController->renderInternal()
+#2 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(872): TeamController->renderFile()
+#3 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(785): TeamController->renderPartial()
+#4 C:\xampp\htdocs\DemoProject\protected\controllers\TeamController.php(68): TeamController->render()
+#5 C:\xampp\htdocs\DemoProject\yii\framework\web\actions\CInlineAction.php(49): TeamController->actionIndex()
+#6 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#7 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilterChain.php(134): TeamController->runAction()
+#8 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#9 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(1148): CAccessControlFilter->filter()
+#10 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CInlineFilter.php(58): TeamController->filterAccessControl()
+#11 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#12 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(291): CFilterChain->run()
+#13 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(265): TeamController->runActionWithFilters()
+#14 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(282): TeamController->run()
+#15 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#16 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#17 C:\xampp\htdocs\DemoProject\index.php(14): CWebApplication->run()
+REQUEST_URI=/DemoProject/team/index
+in C:\xampp\htdocs\DemoProject\protected\views\team\index.php (2)
+in C:\xampp\htdocs\DemoProject\protected\controllers\TeamController.php (68)
+in C:\xampp\htdocs\DemoProject\index.php (14)
+2018/07/23 18:45:16 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:45:16 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 18:57:14 [error] [exception.CException] CException: TbActiveForm and its behaviors do not have a method or closure named "dateFieldRow". in C:\xampp\htdocs\DemoProject\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\protected\views\match\_form.php(36): CComponent->__call('dateFieldRow', Array)
+#1 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(872): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\DemoProject\protected\views\match\update.php(14): CController->renderPartial('_form', Array)
+#5 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(872): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(785): CController->renderPartial('update', Array, true)
+#9 C:\xampp\htdocs\DemoProject\protected\controllers\MatchController.php(117): CController->render('update', Array)
+#10 [internal function]: MatchController->actionUpdate('12')
+#11 C:\xampp\htdocs\DemoProject\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MatchController), Array)
+#12 C:\xampp\htdocs\DemoProject\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MatchController), Object(ReflectionMethod), Array)
+#13 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#22 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('match/update')
+#23 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#25 {main}
+REQUEST_URI=/DemoProject/match/update/12
+HTTP_REFERER=http://localhost/DemoProject/match/admin
+---
+2018/07/23 19:00:32 [error] [exception.CException] CException: TbActiveForm and its behaviors do not have a method or closure named "dateFieldRow". in C:\xampp\htdocs\DemoProject\yii\framework\base\CComponent.php:266
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\protected\views\match\_form.php(36): CComponent->__call('dateFieldRow', Array)
+#1 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#3 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(872): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#4 C:\xampp\htdocs\DemoProject\protected\views\match\update.php(14): CController->renderPartial('_form', Array)
+#5 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(126): require('C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\DemoProject\yii\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\\xampp\\htdocs...', Array, true)
+#7 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(872): CBaseController->renderFile('C:\\xampp\\htdocs...', Array, true)
+#8 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(785): CController->renderPartial('update', Array, true)
+#9 C:\xampp\htdocs\DemoProject\protected\controllers\MatchController.php(117): CController->render('update', Array)
+#10 [internal function]: MatchController->actionUpdate('12')
+#11 C:\xampp\htdocs\DemoProject\yii\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs(Object(MatchController), Array)
+#12 C:\xampp\htdocs\DemoProject\yii\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(MatchController), Object(ReflectionMethod), Array)
+#13 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#15 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#16 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(1148): CFilter->filter(Object(CFilterChain))
+#17 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 C:\xampp\htdocs\DemoProject\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#19 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(291): CFilterChain->run()
+#20 C:\xampp\htdocs\DemoProject\yii\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(282): CController->run('update')
+#22 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('match/update')
+#23 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#24 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#25 {main}
+REQUEST_URI=/DemoProject/match/update/12
+HTTP_REFERER=http://localhost/DemoProject/match/admin
+---
+2018/07/23 19:07:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 19:07:48 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/team/index
+---
+2018/07/23 20:06:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/23 20:06:49 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 09:54:34 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 09:54:34 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 10:13:04 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 10:13:04 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 10:14:39 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 10:14:39 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 10:14:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/sunH.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/s...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/sunH.png
+HTTP_REFERER=http://localhost/DemoProject/
+---
+2018/07/28 10:14:43 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "themes/images/pke.png". in C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\DemoProject\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('themes/images/p...')
+#1 C:\xampp\htdocs\DemoProject\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\DemoProject\index.php(14): CApplication->run()
+#3 {main}
+REQUEST_URI=/DemoProject/themes/images/pke.png
+HTTP_REFERER=http://localhost/DemoProject/
+---

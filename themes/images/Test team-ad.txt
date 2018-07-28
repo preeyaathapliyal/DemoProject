@@ -1,0 +1,60 @@
+Ad Tech Engineering Team - PHP Developer
+Media.net Contextual Advertising
+
+
+Media.net, Directi's Internet Advertising Division, is one of the world's leading companies in the Contextual
+Advertising space. We build technology that identifies the intent of a user viewing a webpage and then
+shows advertisements related to what the user is looking for. We use Machine Learning, Data Mining, Linguistic
+Analysis and Advanced Statistics to build contextual models to understand pages on the internet.
+We serve our contextual real-time ads customized for each visitor and each page view across billions of visitors,
+across 10's of millions sites/domains on a server infrastructure that runs 1000+ CPUs, terabytes of RAM, and 100's
+of terabytes of data. We are a leading company in google ads space
+
+What is the Job like?
+As a PHP Developer in the AdTech Engineering area, you will work with world class dev teams to develop game-
+changing, globally distributed, internet advertising products used by millions worldwide. These products involve
+myriad technologies, diverse platforms, complex algorithms and latest application paradigms such as Ajax, NoSQL
+databases, eventual consistency, distributed queues and are deployed across hundreds of servers in a super-
+scalable fashion where a 10ms delay in response time could mean the difference between success and failure.
+We believe that 'code speaks louder than words' and as such expect everyone at every level in the engineering team
+to be comfortable with rolling up their sleeves, firing up their favorite IDE and writing clean, testable and well-
+designed code.
+
+Who should apply for this post?
+You have mastered multiple platforms and - whether it is SOAP vs REST or Ajax vs Flex or Postgres vs MySQL
+or Cassandra vs Voldemort - you know when to use which and can argue all the pros and cons of Strong typing
+vs ease of use OR browser compatibility issues vs lack of community support OR MVCC vs multiple backend storage
+engines OR scalability vs simplicity etc.
+You continue to be very involved in technology and still check-in code. You are passionate about automated testing,
+good design, performance and scalability. You have exceptional oral/written communication skills, excellent logical
+reasoning and a keen sense of business. You can deliver good software with a kick-ass user experience, at a rapid
+pace.
+
+Skills, Knowledge and Experience
+
+ A track record of working on scalable interactive web applications, preferably at a major internet property or
+well known startup
+ Good grasp on programming fundamentals including OOP, Design Patterns, Algorithms, Data
+Structures, Networking and OS Concepts
+ Solid experience of Object Oriented Design, and of MVC frameworks
+ Familiarity with relational databases, experience of writing complex queries (we use MS-SQL/MySQL)
+ Can exhibit a passion and enthusiasm for remarkable technology (Knowledge and contribution to open
+source projects, Active Blog, etc...)
+ Ability to learn emerging technical standards and apply/coach development team in proper adoption
+ As an individual - it's in your nature to question why things are the way they are.
+Bonus points
+ Knowledge of Agile development methodologies (XP, Scrum etc)
+ Active blogger
+ Contribution to open source projects
+ Ability to rattle off the names of every planet from Issac Asimov's Foundation Trilogy in reverse alphabetical
+order
+
+Benefits & Perks
+Directians love their jobs, and not just because we offer the most competitive salaries in the industry. Our excellent
+benefits include everything from great medical and life insurance to catered meals. Our workspaces are comfortable
+and fun, complete with bean bag chairs, ping pong tables, and all the snacks you can eat. We have no dress code
+(tee-shirts are a-ok!). We have flexible work hours and flexible holidays, which means that teams pick their own
+work hours. Directi has its own concierge desk that doubles up as a travel agency?
+We are passionate about building the next generation of web products, and we believe that happy directians are the
+key to achieving this goal. If you like the idea of working in an exciting workspace on cutting-edge internet products
+that make a truly global impact (and wearing flip-flops to work), then we want to get to know you!

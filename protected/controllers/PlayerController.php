@@ -94,6 +94,9 @@ class PlayerController extends Controller {
      * @param integer $id the ID of the model to be updated
      */
     public function actionUpdate($id) {
+        $parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+        $id = $parser->purify($id); //we purify the $id
+
         $model = $this->loadModel($id);
 
         $oldImageName = $model->image;
@@ -138,6 +141,9 @@ class PlayerController extends Controller {
      */
     public function actionDelete($id) {
         try{
+            $parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
+            $id = $parser->purify($id); //we purify the $id
+
             $model = $this->loadModel($id);
 
             if(file_exists(Yii::app()->basePath.'/../themes/images/player_images/'.$model->image))
