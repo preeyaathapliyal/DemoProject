@@ -7,7 +7,8 @@ class TeamController extends Controller {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-
+    public $viewId=null;
+    public $viewData=null;
     /**
      * @return array action filters
      */
@@ -145,20 +146,16 @@ class TeamController extends Controller {
      */
     public function actionCreate() {
         $model = new Team;
-
-
+       
         if (isset($_POST['Team'])) {
-
             echo CActiveForm::validate($model);
             $checkTeam = Team::checkTeamExist($_POST['Team']['name']);
-            if($checkTeam){
-                $uploadedFile=CUploadedFile::getInstance($model,'logo');
-                if(!empty($uploadedFile)){
-                    $fileName = "{$_POST['Team']['name']}-{$uploadedFile->name}"; 
-                    $uploadedFile->saveAs(Yii::app()->basePath.'/../themes/images/'.$fileName); 
+            if ($checkTeam) {
+                $uploadedFileName = TeamHelper::uploadImage($model,$_POST['Team']['name'],'logo');
+                if (!empty($uploadedFileName)) {
                     $model->attributes = $_POST['Team'];
                     $model->created_at = date('Y:m:d H:i:s');
-                    $model->logo = $fileName;
+                    $model->logo = $uploadedFileName;
 
                     if ($model->validate() && $model->save()) {
                         Yii::app()->user->setFlash('success', "Team saved successfully!");
@@ -194,28 +191,24 @@ class TeamController extends Controller {
         if (isset($_POST['Team'])) {
             $model->attributes = $_POST['Team'];
             
-            $uploadedFile=CUploadedFile::getInstance($model,'logo');
-
-
-            if(!empty($uploadedFile)){
-                $fileName = "{$_POST['Team']['name']}-{$uploadedFile->name}"; 
-                $uploadedFile->saveAs(Yii::app()->basePath.'/../themes/images/'.$fileName); 
-                if(file_exists(Yii::app()->basePath.'/../themes/images/'.$oldLogoName))
+            $uploadedFileName = TeamHelper::uploadImage($model,$_POST['Team']['name'],'logo');
+            if (!empty($uploadedFileName)) {
+                if (file_exists(Yii::app()->basePath.'/../themes/images/'.$oldLogoName))
                     unlink(Yii::app()->basePath.'/../themes/images/'.$oldLogoName);
-                $model->logo = $fileName;
-            }else{
+                $model->logo = $uploadedFileName;
+            } else {
                  $model->logo = $oldLogoName;
             }
 
             $model->updated_at = date('Y:m:d H:i:s');
 
-            if($model->logo == ''){
+            if ($model->logo == '') {
                 $model->addError('logo','Logo can not be blank!');
             }
-            elseif($model->save(false)){
+            elseif ($model->save(false)) {
                 Yii::app()->user->setFlash('success', "Team updated successfully!");
                 $this->redirect(array('index'));
-            }else {
+            } else {
                 $model->addError('common_error','Error in updating team!');
             }
         }
@@ -236,7 +229,7 @@ class TeamController extends Controller {
 
             $model = $this->loadModel($id);
 
-            if(file_exists(Yii::app()->basePath.'/../themes/images/'.$model->logo))
+            if (file_exists(Yii::app()->basePath.'/../themes/images/'.$model->logo))
                         unlink(Yii::app()->basePath.'/../themes/images/'.$model->logo);
 
             $model = $model->delete();
@@ -254,6 +247,21 @@ class TeamController extends Controller {
         // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
         if(!isset($_GET['ajax']))
             $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin')); 
+    }
+
+    /*
+     * Override of render to enable unit testing of controller
+     * */
+    public function render($view,$data=null,$return=false)
+    {
+            $this->viewId = $view;
+            $this->viewData = $data;
+            
+            /* if the component 'fixture' is defined we are probably in the test environment */
+            if(!Yii::app()->hasComponent('fixture')){
+                    parent::render($view,$data,$return);
+            }
+            
     }
     
 }

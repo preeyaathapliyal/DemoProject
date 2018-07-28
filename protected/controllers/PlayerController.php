@@ -7,7 +7,8 @@ class PlayerController extends Controller {
      * using two-column layout. See 'protected/views/layouts/column2.php'.
      */
     public $layout = '//layouts/column2';
-
+    public $viewId=null;
+    public $viewData=null;
     /**
      * @return array action filters
      */
@@ -62,14 +63,11 @@ class PlayerController extends Controller {
 
         if (isset($_POST['Player'])) {
             echo CActiveForm::validate($model);
-            $uploadedFile=CUploadedFile::getInstance($model,'image');
-            if(!empty($uploadedFile)){
-                $time = time();
-                $fileName = "{$time}-{$_POST['Player']['first_name']}-{$uploadedFile->name}"; 
-                $uploadedFile->saveAs(Yii::app()->basePath.'/../themes/images/player_images/'.$fileName); 
+            $uploadedFileName = TeamHelper::uploadImage($model,$_POST['Player']['first_name'],'image');
+            if(!empty($uploadedFileName)){
                 $model->attributes = $_POST['Player'];
                 $model->created_at = date('Y:m:d H:i:s');
-                $model->image = $fileName;
+                $model->image = $uploadedFileName;
                 if ($model->validate() && $model->save()) {
                     Yii::app()->user->setFlash('success', "Player saved successfully!");
                     $this->redirect(array('admin'));
@@ -103,15 +101,11 @@ class PlayerController extends Controller {
 
         if (isset($_POST['Player'])) {
             $model->attributes = $_POST['Player'];
-            $uploadedFile=CUploadedFile::getInstance($model,'image');
-
-            if(!empty($uploadedFile)){
-                $time = time();
-                $fileName = "{$time}-{$_POST['Player']['first_name']}-{$uploadedFile->name}"; 
-                $uploadedFile->saveAs(Yii::app()->basePath.'/../themes/images/player_images/'.$fileName); 
+            $uploadedFileName = TeamHelper::uploadImage($model,$_POST['Player']['first_name'],'image');
+            if(!empty($uploadedFileName)){
                 if(file_exists(Yii::app()->basePath.'/../themes/images/player_images/'.$oldImageName))
                     unlink(Yii::app()->basePath.'/../themes/images/player_images/'.$oldImageName);
-                $model->image = $fileName;
+                $model->image = $uploadedFileName;
             }else{
                  $model->image = $oldImageName;
             }
@@ -167,16 +161,6 @@ class PlayerController extends Controller {
     }
 
     /**
-     * Lists all models.
-     */
-    public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('Player');
-        $this->render('index', array(
-            'dataProvider' => $dataProvider,
-        ));
-    }
-
-    /**
      * Manages all models.
      */
     public function actionAdmin() {
@@ -213,6 +197,21 @@ class PlayerController extends Controller {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    /*
+     * Override of render to enable unit testing of controller
+     * */
+    public function render($view,$data=null,$return=false)
+    {
+            $this->viewId = $view;
+            $this->viewData = $data;
+            
+            /* if the component 'fixture' is defined we are probably in the test environment */
+            if(!Yii::app()->hasComponent('fixture')){
+                    parent::render($view,$data,$return);
+            }
+            
     }
 
 }

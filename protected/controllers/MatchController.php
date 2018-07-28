@@ -7,6 +7,8 @@ class MatchController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column2';
+	public $viewId=null;
+    public $viewData=null;
 
 	/**
 	 * @return array action filters
@@ -44,18 +46,8 @@ class MatchController extends Controller
 		);
 	}
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
-
-	/**
+	
+    /**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
@@ -148,17 +140,6 @@ class MatchController extends Controller
 	}
 
 	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Match');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
-	}
-
-	/**
 	 * Manages all models.
 	 */
 	public function actionAdmin()
@@ -204,40 +185,35 @@ class MatchController extends Controller
 		$team_id = isset($_POST['Match_team1'])?$_POST['Match_team1']:"";
 		if(!empty($team_id)) {
 			$parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
-        	$id = $parser->purify($team_id); //we purify the $id
+        	$team_id = $parser->purify($team_id); //we purify the $team_id
 
-			$teamList = Team::model()->findAll(array('condition'=>'team_id != :team_id','params'=>array(':team_id'=>$team_id),'order'=>'Name ASC'));
-			$teamList=CHtml::listData($teamList,'team_id','name');
-			
-		   $team2 = "<option value=''>Select Team2</option>";
-		   foreach($teamList as $key=>$val)
-		   $team2 .= CHtml::tag('option', array('value'=>$key),CHtml::encode($val),true);
-
-			$winner = "<option value=''>Select Winner</option>";
-			echo CJSON::encode(array(
-			  'team2'=>$team2,
-			  'winner'=>$winner
-			));
+			echo TeamHelper::getTeamListHtml($team_id);
 		}
 	}
 
 	public function actionTeamListForWinner() 
 	{
 		$parser = new CHtmlPurifier(); //create instance of CHtmlPurifier
-       	$_POST = $parser->purify($_POST); //we purify the $id
+       	$_POST = $parser->purify($_POST); //we purify the $_POST
 		
 		$teamArray[] = isset($_POST['Match_team1'])?$_POST['Match_team1']:"";
 		$teamArray[] = isset($_POST['Match_team2'])?$_POST['Match_team2']:"";
 
-		if(!empty($teamArray)) {
-			$teamList = implode(',',$teamArray);
-			$teamList = rtrim($teamList,',');
-			$teamWinnerList = Team::model()->findAll(array('condition'=>"team_id in ($teamList)",'order'=>'Name ASC'));
-			$teamWinnerList=CHtml::listData($teamWinnerList,'team_id','name');
-			
-		   echo "<option value=''>Select Winner</option>";
-		   foreach($teamWinnerList as $key=>$val)
-		   echo CHtml::tag('option', array('value'=>$key),CHtml::encode($val),true);
-		}
+		echo TeamHelper::getWinnerListHtml($teamArray);
 	}
+
+	/*
+     * Override of render to enable unit testing of controller
+     * */
+    public function render($view,$data=null,$return=false)
+    {
+            $this->viewId = $view;
+            $this->viewData = $data;
+            
+            /* if the component 'fixture' is defined we are probably in the test environment */
+            if(!Yii::app()->hasComponent('fixture')){
+                    parent::render($view,$data,$return);
+            }
+            
+    }
 }

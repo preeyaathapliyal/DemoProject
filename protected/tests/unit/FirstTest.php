@@ -5,6 +5,7 @@ class FirstTest extends CTestCase
 {
     public function testTrueAssertsToTrue(){
         $this->asserttrue(true);
+        $this->asserttrue(true);
     }
     
 }
