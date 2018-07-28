@@ -5,7 +5,7 @@
  * Make sure the URL ends with a slash so that we can use relative URLs in test cases
  */
 //define('TEST_BASE_URL','http://localhost/testdrive/index-test.php/');
-define('TEST_BASE_URL','http://localhost/UI/index-test.php/');
+define('TEST_BASE_URL','http://localhost/DemoProject/index-test.php/');
 require_once('/../../yii/framework/test/CWebTestCase.php');
 /**
  * The base class for functional test cases.
